@@ -114,25 +114,25 @@
 
 
       @GetMapping("hello-api")
-    @ResponseBody
-    public Hello helloApi(@RequestParam("name")String name){
-        Hello hello = new Hello();
-        hello.setName(name);
+      @ResponseBody
+      public Hello helloApi(@RequestParam("name")String name){
+      Hello hello = new Hello();
+      hello.setName(name);
         return hello;
 
 
-    }
-    static class Hello{
-        private  String name;
-
-        public String getName() {
-            return name;
         }
-
-        public void setName(String name) {
-            this.name = name;
+        static class Hello{
+            private  String name;
+    
+            public String getName() {
+                return name;
+            }
+    
+            public void setName(String name) {
+                this.name = name;
+            }
         }
-    }
 
 * Json방식으로 키와 벨류로 이루어진 구조 
 * 실제 동작방식
