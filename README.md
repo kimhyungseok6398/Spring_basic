@@ -66,6 +66,33 @@
 
 ## MVC와 템플릿 엔진( 가장 많이 선호)
 * MVC와 템플릿 엔진 : JSP, PHP 등 서버에서 프로그래밍 하여 html을 동적으로 변경하여 보여주는 방식  
+  * Model ,view, Controller로 구성 
+
+        @GetMapping("hell-mvc")
+        public String helloMvc(@RequestParam(value = "name",required = false) String name, Model model){
+        model.addAttribute("name",name);
+        return "hello-template";
+        }
+
+
+        <html xmlns:th="http://www.thymeleaf.org">
+          <body>
+          <p th:text="'hello ' + ${name}">hello! empty</p>
+          </body>
+          </html>
+
+* 이렇게 컨트롤러와 뷰를 생성한 다음 매개변수에 있는 name과 벨루값에 있는 name이
+* url에 입력하는 값으로 대체가 된다
+* ex) http://localhost:8080/hell-mvc?name=spring!!!!
+* 이면 ?뒤에 입력한 값으로 뷰에선 치환 달러 표시내용에서 model에 키 값에서 내용을 꺼내서 그 값으로 치환 
+## MVC에 웹 구조 
+* 똑같이 localhost:8080/hello-mvc를 치면 
+* 내장된 톰켓 서버를 거치고  hello-mvc이라는 것이 요청된것을 스프링한데 전달
+* 스프링 컨테이너는 매핑된 컨트롤러를 찾고  
+* 키는 name이고 값은 spring일때
+* 뷰 리졸버가 뷰를 찾아서 연결시켜준다 
+* 리졸버가 뷰를 찾아서 타임리프가 변환된 html를 웹브라우저에게 반환
+
 
 
 ## API
