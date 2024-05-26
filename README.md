@@ -97,4 +97,50 @@
 
 ## API
 * API : 안드로이드, 클라이언트와 개발할떄 JSON 데이터 구조 포멧을 이용하여 클라이언트에게 데이터를 보여주는 방식 
+* http에서 헤더부와 바디부가 있는데 바디뷰에 내용을 직접 넣어주는것
 
+
+        @GetMapping("hello-string")
+        @ResponseBody
+        public String helloString(@RequestParam("name")String name){
+        return "hello" + name;    // spring으로 넣어준다면 "hello spring" 이 된다, 요청한 클라이언트에 그대로 내려간다.
+      }
+     }
+
+* 컨트롤러에 어노테이션  @ResponseBody을 추가하여 
+* 값을 spring으로 넣어준다면 "hello spring" 이 된다, 요청한 클라이언트에 그대로 내려간다.
+* ex) http://localhost:8080/hello-string?name=sptring!!!!!!!!
+* 만약 데이터를 달라고 하는 방식은
+
+
+      @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name")String name){
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+
+
+    }
+    static class Hello{
+        private  String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
+* Json방식으로 키와 벨류로 이루어진 구조 
+* 실제 동작방식
+* 똑같이 로컬로 url에 검색을 하면 톰켓이 관련된 컨트롤러를 찾을 수 있게 스프링 컨테이너로 전갈
+* 스프링 컨테이너는 관련된 컨트롤러를 찾는다
+* 이때 @Responsebody 어노테이션의 역할은 http에 응답에 그대로 넣어주는것
+* 하지만 이 데이터가 문자가 아닌 객체이기에 Json데이터 방식으로 반환하는 방식 
+* @Responsebody 이 어노테이션이 붙어 있으면 ViewResover가 아닌 HttpMessageConvertor가 동작을 한다
+* 문자일경우 StringConverter가 동작을 하고 
+* 객체일 경우 JsonConverter가 동작을 한다.
+* 객체는 Json데이터로 변경을 해서 요청한 쪽으로 응답을 해준다  
