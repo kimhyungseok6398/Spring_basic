@@ -16,7 +16,7 @@ class MemoryMemberRepositoryTest {
     @AfterEach
     public void afterEach(){
         repository.clearStore();
-        // 매번 메모리를 지우면 테스트 순서가 상관이 없게 된다. 
+        // 매번 메모리를 지우면 테스트 순서가 상관이 없게 된다.
     }
     @Test
     public void save(){
