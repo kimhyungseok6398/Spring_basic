@@ -3,16 +3,24 @@ package hello.hello_spring.service;
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
 public class MemberService {
+    //컴포넌트 스캔과 의존관계 설정
     private final MemberRepository memberRepository;
+
+    // 생성자 주입방식
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+
     // 테스트 클래스 자동작성 단축키
     // ctrl + shift + T
 

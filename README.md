@@ -144,3 +144,33 @@
 * 문자일경우 StringConverter가 동작을 하고 
 * 객체일 경우 JsonConverter가 동작을 한다.
 * 객체는 Json데이터로 변경을 해서 요청한 쪽으로 응답을 해준다  
+
+
+## 자바 코드로 직접 스프링 빈 등록하기
+* 회원 서비스와 회원 레포지토리의 @Service, @Repository, @Autowise 등
+* 어노테이션을 제거하고 진행한다.
+
+
+## DI 방식
+* 필드주입, setter 주입, 생성자 주입 방식 3가지가 있다.
+* 주로 생성자 주입 방식이 쓰인다
+
+
+## 필드 주입
+
+        @AutoWise private MemberService memberService;
+
+
+## setter 주입 방식
+
+        public void setMemberService(MemberService memberService) {
+              this.memberService = memberService;
+
+
+## 생성자 주입 방식
+          @Autowired
+          public MemberController(MemberService memberService) {
+          this.memberService = memberService;
+          // 생성자에 Autowiredr가 있으면
+          // 스프링이 스프링에 있는 멤버 서비스를 가져다가 연결을 시켜준다.
+
