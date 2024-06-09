@@ -174,3 +174,13 @@
           // 생성자에 Autowiredr가 있으면
           // 스프링이 스프링에 있는 멤버 서비스를 가져다가 연결을 시켜준다.
 
+
+
+## 회원 웹기능 조회
+* memberList에 있는 ${members}를 읽어 드린다.
+* Model에 있는 값을 꺼내는 것
+
+
+## h2 데이터 베이스 접근 방식
+* C:\Users\bb124\OneDrive\바탕 화면\study\h2\bin>dir
+* 다음 -> h2.bat 실행 
